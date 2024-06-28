@@ -1,0 +1,17 @@
+html, body, #root, .App {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: rgb(3, 0, 0);
+  overflow-x: hidden; /* Impedir rolagem horizontal */
+}
+
+header {
+  z-index: 10; /* Certifique-se de que o cabeçalho tenha um índice z maior */
+}
+
+.content {
+  padding-top: 6rem; /* Ajuste conforme necessário */
+}
