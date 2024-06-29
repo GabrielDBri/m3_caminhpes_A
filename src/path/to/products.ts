@@ -7,6 +7,11 @@ import mercedes1 from '/mercedes/merces 3.png';
 import mercedes2 from '/mercedes/merces.png';
 import mercedes3 from '/mercedes/merces 2.png';
 import mercedes4 from '/mercedes/merces 4.png';
+import cruze1 from '/cruze/cruze1.png';
+import cruze2 from '/cruze/cruze2.png';
+import cruze3 from '/cruze/cruze3.png';
+import cruze4 from '/cruze/cruze4.png';
+
 
 
 export interface Product {
@@ -28,7 +33,7 @@ export const products: Product[] = [
     brand: 'Iveco',
     type: 'Caminhão',
     model: 'ssd',
-    price: 150000,
+    price: 115000,
     images: [ivecoImage1], // Exemplo de imagem
     description: 'Caminhão de alta qualidade, com grndes formas de trasnporte, robusto economico, e pronto para atender voce cliente',
     additionalInfo: 'Usado, totalmente preservado, segundo dono',
@@ -39,7 +44,7 @@ export const products: Product[] = [
     brand: 'Ford',
     type: 'Caminhão',
     model: 'ssd',
-    price: 270000,
+    price: 230000,
     images: [fordCargo1,fordCargo2,fordCargo3,fordCargo4], // Exemplo de imagem
     description: 'Caminhão de alta qualidade, com grndes formas de trasnporte, robusto economico, e pronto para atender voce cliente',
     additionalInfo: 'Usado, totalmente preservado, segundo dono',
@@ -50,9 +55,20 @@ export const products: Product[] = [
     brand: 'Mercedes',
     type: 'Caminhão',
     model: 'ssd',
-    price: 270000,
+    price: 260000,
     images: [mercedes1,mercedes2,mercedes3,mercedes4], // Exemplo de imagem
     description: 'Caminhão de alta qualidade, com grandes formas de trasnporte, robusto economico, e pronto para atender voce cliente',
+    additionalInfo: 'Usado, totalmente preservado, segundo dono',
+  },
+  {
+    id: 4,
+    name: 'Cruze RS 1.4 Turbo',
+    brand: 'Cruze',
+    type: 'Automotivo',
+    model: 'ssd',
+    price: 129000,
+    images: [cruze1,cruze2,cruze3,cruze4], // Exemplo de imagem
+    description: 'Caminhão de alta qualidade, com grndes formas de trasnporte, robusto economico, e pronto para atender voce cliente',
     additionalInfo: 'Usado, totalmente preservado, segundo dono',
   },
 

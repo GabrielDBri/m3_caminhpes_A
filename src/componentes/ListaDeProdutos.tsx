@@ -99,6 +99,7 @@ const ProductList = () => {
             <option value="Ford">Ford</option>
             <option value="Iveco">Iveco</option>
             <option value="Mercedes">Mercedes</option>
+            <option value="Cruze">Cruze</option>
           </select>
         </div>
         <div className="flex-grow ml-2">
