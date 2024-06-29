@@ -5,7 +5,7 @@ import {
   getCoreRowModel,
 } from '@tanstack/react-table';
 import ProductModal from './ProductModal'; // Verifique o caminho do import conforme necessário
-import { products, Product } from '../caminhões/products';
+import { products, Product } from '../path/to/products';
 
 const ProductList = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
