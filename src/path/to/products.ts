@@ -69,7 +69,7 @@ export const products: Product[] = [
     price: 129000,
     images: [cruze1,cruze2,cruze3,cruze4], // Exemplo de imagem
     description: 'Caminhão de alta qualidade, com grndes formas de trasnporte, robusto economico, e pronto para atender voce cliente',
-    additionalInfo: 'Usado, totalmente preservado, segundo dono',
+    additionalInfo: 'Usado, totalmente preservado, segundo dono   ',
   },
 
   // Outros produtos aqui
