@@ -13,7 +13,7 @@ const ProductList = () => {
   // Filtros de estado
   const [filterType, setFilterType] = useState('');
   const [filterBrand, setFilterBrand] = useState('');
-  const [filterModel, setFilterModel] = useState('');
+
   const [filterValue, setFilterValue] = useState('');
 
   const filteredProducts = useMemo(() => {
@@ -21,11 +21,10 @@ const ProductList = () => {
       return (
         (filterType === '' || product.type.includes(filterType)) &&
         (filterBrand === '' || product.brand.includes(filterBrand)) &&
-        (filterModel === '' || product.model.includes(filterModel)) &&
         (filterValue === '' || parseFloat(product.price) <= parseFloat(filterValue))
       );
     });
-  }, [filterType, filterBrand, filterModel, filterValue]);
+  }, [filterType, filterBrand, filterValue]);
 
   const columns = useMemo<ColumnDef<Product>[]>(
     () => [
@@ -70,9 +69,6 @@ const ProductList = () => {
     setFilterBrand(e.target.value);
   };
 
-  const handleFilterModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFilterModel(e.target.value);
-  };
 
   const handleFilterValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterValue(e.target.value);
@@ -89,7 +85,8 @@ const ProductList = () => {
             className="flex-grow p-2 border border-gray-300 text-black"
           >
             <option value="">Tipo</option>
-            {/* Adicione as opções de tipo aqui */}
+            <option value="Caminhão">Caminhão</option>
+            <option value="Automotivo">Automotivo</option>
           </select>
         </div>
         <div className="flex-grow ml-2">
@@ -101,16 +98,7 @@ const ProductList = () => {
             <option value="">Marca</option>
             <option value="Ford">Ford</option>
             <option value="Iveco">Iveco</option>
-          </select>
-        </div>
-        <div className="flex-grow ml-2">
-          <select
-            value={filterModel}
-            onChange={handleFilterModelChange}
-            className="w-full p-2 border border-black text-black"
-          >
-            <option value="">Modelo</option>
-            
+            <option value="Mercedes">Mercedes</option>
           </select>
         </div>
         <div className="flex-grow ml-2">
