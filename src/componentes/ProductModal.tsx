@@ -5,7 +5,7 @@ export interface Product {
   id: number;
   name: string;
   brand: string;
-  price: string;
+  price: number;
   images: string[]; // Alteração para suportar múltiplas imagens
   description: string;
   additionalInfo: string; // Informações adicionais sobre o produto

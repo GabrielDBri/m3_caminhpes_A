@@ -1,9 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import {
-  ColumnDef,
-  useReactTable,
-  getCoreRowModel,
-} from '@tanstack/react-table';
+import { ColumnDef, useReactTable, getCoreRowModel } from '@tanstack/react-table';
 import ProductModal from './ProductModal'; // Verifique o caminho do import conforme necessário
 import { products, Product } from '../path/to/products';
 
@@ -13,7 +9,6 @@ const ProductList = () => {
   // Filtros de estado
   const [filterType, setFilterType] = useState('');
   const [filterBrand, setFilterBrand] = useState('');
-
   const [filterValue, setFilterValue] = useState('');
 
   const filteredProducts = useMemo(() => {
@@ -21,7 +16,7 @@ const ProductList = () => {
       return (
         (filterType === '' || product.type.includes(filterType)) &&
         (filterBrand === '' || product.brand.includes(filterBrand)) &&
-        (filterValue === '' || parseFloat(product.price) <= parseFloat(filterValue))
+        (filterValue === '' || product.price <= parseFloat(filterValue))
       );
     });
   }, [filterType, filterBrand, filterValue]);
@@ -48,7 +43,13 @@ const ProductList = () => {
       {
         accessorKey: 'price',
         header: 'Price',
-        Cell: ({ value }: { value: string }) => <p className="text-red-600">{value}</p>,
+        Cell: ({ value }: { value: number }) => {
+          const formattedPrice = new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          }).format(value);
+          return <p className="text-red-600">{formattedPrice}</p>;
+        },
       },
     ],
     []
@@ -68,7 +69,6 @@ const ProductList = () => {
   const handleFilterBrandChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFilterBrand(e.target.value);
   };
-
 
   const handleFilterValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterValue(e.target.value);
@@ -104,7 +104,7 @@ const ProductList = () => {
         <div className="flex-grow ml-2">
           <input
             type="text"
-            placeholder="Preço Maximo"
+            placeholder="Preço Máximo"
             value={filterValue}
             onChange={handleFilterValueChange}
             className="w-full p-2 border border-gray-300 rounded-md text-black"
@@ -121,7 +121,10 @@ const ProductList = () => {
               <img src={row.original.images[0]} alt={`Image of ${row.original.name}`} className="w-full h-48 object-cover" />
               <h2 className="text-lg font-semibold mt-2">{row.original.name}</h2>
               <p className="text-gray-500">{row.original.brand}</p>
-              <p className="text-red-600">{row.original.price}</p>
+              <p className="text-red-600">{new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              }).format(row.original.price)}</p>
               <button
                 className="bg-blue-500 text-white py-2 px-4 mt-2"
                 onClick={() => setSelectedProduct(row.original)}
