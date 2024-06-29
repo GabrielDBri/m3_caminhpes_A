@@ -37,10 +37,9 @@ const FaleConosco = () => {
     <div className="flex justify-center items-center h-screen bg-gray-800 text-white">
       <div className="w-1/2 p-8">
         <h2 className="text-2xl font-bold mb-4">Entre em Contato</h2>
-        <p>Telefone: +55 35 99964-0477</p>
-        <p>Celular: +55 35 99964-0477</p>
-        <p>Email: exemplo@dominio.com</p>
-        <p>Endereço: Rua Exemplo, 1234</p>
+        <li>Telefone: (35) 99761-8038</li>
+        <p>Avenida Presidente Tancredo de Almeida Neves, 434 <br />
+        Avenida - Itajuba - MG.</p>
       </div>
       {/* Coluna esquerda (formulário) */}
       <div className="w-1/2 p-8 border">
