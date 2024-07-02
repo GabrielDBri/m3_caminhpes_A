@@ -65,9 +65,9 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
 
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-      <div className="bg-gray-800 p-8 rounded border shadow-lg max-w-3xl w-full relative flex">
+      <div className="bg-gray-800 p-8 rounded border shadow-lg max-w-3xl w-full relative flex flex-col md:flex-row">
         {/* Carrossel de imagens */}
-        <div className="w-1/2">
+        <div className="md:w-1/2 mb-4 md:mb-0">
           <div className="relative">
             <button onClick={handlePrevImage} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-200 px-2 py-1 rounded-l-md">
               Anterior
@@ -80,7 +80,7 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
         </div>
         
         {/* Informações adicionais e formulário */}
-        <div className="w-1/2 p-4">
+        <div className="md:w-1/2 p-4">
           <h2 className="text-2xl font-bold mb-4">{product.name}</h2>
           <p>{product.description}</p>
           <p className="mt-4">{product.additionalInfo}</p>
