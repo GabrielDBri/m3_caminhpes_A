@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const FaleConosco = () => {
   const [formData, setFormData] = useState({
@@ -20,8 +21,18 @@ const FaleConosco = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica para enviar o email
-    console.log(formData);
+    const templateParams = {
+      nome: formData.nome,
+      telefone: formData.telefone,
+      celular: formData.celular,
+      email: formData.email,
+      assunto: formData.assunto,
+      mensagem: formData.mensagem,
+    };
+    
+    emailjs.send("service_8me3ten", "template_154f6vn", templateParams, "T80AufAu-uOSR4VAy")
+      
+
     // Resetar o formulário depois de enviar
     setFormData({
       nome: '',
@@ -134,7 +145,6 @@ const FaleConosco = () => {
           </button>
         </form>
       </div>
-
     </div>
   );
 };
