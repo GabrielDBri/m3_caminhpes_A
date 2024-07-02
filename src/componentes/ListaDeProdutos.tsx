@@ -1,10 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ColumnDef, useReactTable, getCoreRowModel } from '@tanstack/react-table';
 import ProductModal from './ProductModal'; // Verifique o caminho do import conforme necessário
 import { products, Product } from '../path/to/products';
 
 const ProductList = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [modalReady, setModalReady] = useState(false); // Estado para controlar o pré-carregamento do modal
+  const [imagesLoaded, setImagesLoaded] = useState(0); // Contador para imagens carregadas
 
   // Filtros de estado
   const [filterType, setFilterType] = useState('');
@@ -27,7 +29,12 @@ const ProductList = () => {
         accessorKey: 'images',
         header: 'Image',
         Cell: ({ value }: { value: string[] }) => (
-          <img src={value[0]} alt={`Image of ${value[0]}`} className="w-full h-48 object-cover" />
+          <img
+            src={value[0]}
+            alt={`Image of ${value[0]}`}
+            className="w-full h-48 object-cover"
+            onLoad={() => setImagesLoaded(prev => prev + 1)} // Atualiza o contador quando a imagem é carregada
+          />
         ),
       },
       {
@@ -73,6 +80,27 @@ const ProductList = () => {
   const handleFilterValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterValue(e.target.value);
   };
+
+  useEffect(() => {
+    // Pré-carregar as imagens dos produtos
+    const imagePromises = filteredProducts.map(product => {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.src = product.images[0];
+        img.onload = () => {
+          setImagesLoaded(prev => prev + 1);
+          resolve(undefined);
+        };
+      });
+    });
+
+    Promise.all(imagePromises).then(() => {
+      // Marcar o modal como pronto quando pelo menos uma imagem estiver carregada
+      if (imagesLoaded > 0) {
+        setModalReady(true);
+      }
+    });
+  }, [filteredProducts, imagesLoaded]);
 
   return (
     <div>
@@ -135,7 +163,7 @@ const ProductList = () => {
             </article>
           ))}
         </div>
-        {selectedProduct && (
+        {selectedProduct && modalReady && ( // Renderizar o modal somente quando o modal estiver pronto e pelo menos uma imagem estiver carregada
           <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
         )}
       </section>

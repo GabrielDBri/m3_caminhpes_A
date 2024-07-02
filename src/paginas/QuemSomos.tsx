@@ -2,7 +2,7 @@ import { Mail, Phone } from 'lucide-react';
 
 const QuemSomos = () => {
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-8">
+    <div className="min-h-screen bg-slate-900 text-white pt-24 sm:pt-24 md:pt-8">
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <h1 className="text-4xl font-bold mb-8 text-lime-500">Quem Somos</h1>
