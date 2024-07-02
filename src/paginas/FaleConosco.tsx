@@ -34,15 +34,15 @@ const FaleConosco = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-800 text-white">
-      <div className="w-1/2 p-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 items-center min-h-screen bg-gray-800 text-white">
+      <div className=" py-16">
         <h2 className="text-2xl font-bold mb-4">Entre em Contato</h2>
         <li>Telefone: (35) 99761-8038</li>
         <p>Avenida Presidente Tancredo de Almeida Neves, 434 <br />
         Avenida - Itajuba - MG.</p>
       </div>
       {/* Coluna esquerda (formulário) */}
-      <div className="w-1/2 p-8 border">
+      <div className=" p-6 border">
         <h2 className="text-2xl font-bold mb-4">Fale Conosco</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex space-x-4">
@@ -52,6 +52,7 @@ const FaleConosco = () => {
                 type="text"
                 id="nome"
                 name="nome"
+                placeholder="Seu nome"
                 value={formData.nome}
                 onChange={handleChange}
                 required
@@ -64,6 +65,7 @@ const FaleConosco = () => {
                 type="email"
                 id="email"
                 name="email"
+                placeholder="Digite Seu e-mail"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -78,6 +80,7 @@ const FaleConosco = () => {
                 type="text"
                 id="telefone"
                 name="telefone"
+                placeholder="Digite Seu Telefone"
                 value={formData.telefone}
                 onChange={handleChange}
                 required
@@ -90,6 +93,7 @@ const FaleConosco = () => {
                 type="text"
                 id="celular"
                 name="celular"
+                placeholder="Digite Seu Celular"
                 value={formData.celular}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
@@ -102,6 +106,7 @@ const FaleConosco = () => {
               type="text"
               id="assunto"
               name="assunto"
+              placeholder="Digite o Assunto"
               value={formData.assunto}
               onChange={handleChange}
               required
@@ -113,6 +118,7 @@ const FaleConosco = () => {
             <textarea
               id="mensagem"
               name="mensagem"
+              placeholder="Digite A Mensagem"
               value={formData.mensagem}
               onChange={handleChange}
               rows={4}

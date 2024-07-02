@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { ColumnDef, useReactTable, getCoreRowModel } from '@tanstack/react-table';
 import ProductModal from './ProductModal'; // Verifique o caminho do import conforme necessário
-import { products, Product } from '../path/to/products';
+import { products, Product } from '../path/to/products.ts';
 
 const ProductList = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -14,7 +14,7 @@ const ProductList = () => {
   const [filterValue, setFilterValue] = useState('');
 
   const filteredProducts = useMemo(() => {
-    return products.filter(product => {
+    return products.filter((product: Product) => {
       return (
         (filterType === '' || product.type.includes(filterType)) &&
         (filterBrand === '' || product.brand.includes(filterBrand)) &&
