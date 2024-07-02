@@ -76,8 +76,8 @@ const ProductList = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center border border-black p-4 text-black shadow-md">
-        <div className="flex-grow flex items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center border border-black p-4 text-black shadow-md">
+        <div className="flex-grow flex items-center mb-2 md:mb-0">
           <i className="fa fa-search text-red-500 mr-2"></i>
           <select
             value={filterType}
@@ -89,7 +89,7 @@ const ProductList = () => {
             <option value="Automotivo">Automotivo</option>
           </select>
         </div>
-        <div className="flex-grow ml-2">
+        <div className="flex-grow mb-2 md:mb-0 md:ml-2">
           <select
             value={filterBrand}
             onChange={handleFilterBrandChange}
@@ -102,7 +102,7 @@ const ProductList = () => {
             <option value="Cruze">Cruze</option>
           </select>
         </div>
-        <div className="flex-grow ml-2">
+        <div className="flex-grow md:ml-2">
           <input
             type="text"
             placeholder="Preço Máximo"
@@ -116,7 +116,7 @@ const ProductList = () => {
         <h1 className="text-4xl font-bold">Nosso Estoque:</h1>
       </header>
       <section className="p-4">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {table.getRowModel().rows.map(row => (
             <article key={row.id} className="border p-4 bg-gray-700">
               <img src={row.original.images[0]} alt={`Image of ${row.original.name}`} className="w-full h-48 object-cover" />
