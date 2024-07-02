@@ -67,25 +67,25 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
       <Draggable handle=".modal-header">
-        <div className="bg-gray-800 p-8 rounded border shadow-lg max-w-3xl w-full relative flex flex-col md:flex-row">
+        <div className="bg-gray-800 p-8 rounded border shadow-lg w-full max-w-3xl h-full max-h-screen overflow-y-auto relative flex flex-col md:flex-row">
           <div className="modal-header cursor-move mb-4 md:mb-0 text-white">
             <h2 className="text-2xl font-bold mb-4">{product.name}</h2>
           </div>
           {/* Carrossel de imagens */}
-          <div className="md:w-1/2 mb-4 md:mb-0 overflow-y-auto max-h-96">
-            <div className="relative">
-              <button onClick={handlePrevImage} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-200 px-2 py-1 rounded-l-md">
+          <div className="md:w-1/2 mb-4 md:mb-0 overflow-hidden relative">
+            <div className="relative w-full h-full">
+              <button onClick={handlePrevImage} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-400 px-1 py-1 rounded-l-md z-10">
                 Anterior
               </button>
-              <button onClick={handleNextImage} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-200 px-2 py-1 rounded-r-md">
+              <button onClick={handleNextImage} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-400 px-1 py-1 rounded-r-md z-10">
                 Próxima
               </button>
-              <img src={product.images[currentImageIndex]} alt={product.name} className="w-full rounded-md" />
+              <img src={product.images[currentImageIndex]} alt={product.name} className="w-full h-full object-contain" />
             </div>
           </div>
           
           {/* Informações adicionais e formulário */}
-          <div className="md:w-1/2 p-4 overflow-y-auto max-h-96">
+          <div className="md:w-1/2 p-4 overflow-y-auto max-h-full">
             <p>{product.description}</p>
             <p className="mt-4">{product.additionalInfo}</p>
             
