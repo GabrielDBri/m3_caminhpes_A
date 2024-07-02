@@ -14,7 +14,7 @@ const Rodape = () => {
           <h3 className="text-red-500 text-lg font-bold">ENDEREÇO</h3>
           <p className="mt-4">
             Avenida Presidente Tancredo de Almeida Neves, 434 <br />
-            Avenida - Itajuba - MG.
+            Avenida - Itajubá - MG.
           </p>
         </div>
 
@@ -22,7 +22,8 @@ const Rodape = () => {
           <h3 className="text-red-500 text-lg font-bold">HORÁRIO DE ATENDIMENTO</h3>
           <p className="mt-4">
             De Segunda a Sexta, <br />
-            das 8h às 18h
+            das 8h às 18h <br/>
+            Sabado das 8h até 12h
           </p>
         </div>
       </div>

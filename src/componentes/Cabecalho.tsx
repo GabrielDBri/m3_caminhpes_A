@@ -13,10 +13,18 @@ const Cabecalho = () => {
 
   return (
     <header className="bg-gradient-to-b from-gray-700 to-black text-white p-4 flex flex-col md:flex-row items-center justify-between w-full fixed top-0 left-0 z-50">
-      <div className="flex items-center justify-center md:justify-start w-full md:w-auto">
+      <div className="flex items-center justify-center w-full md:w-auto">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Logo" className="h-16 w-36 md:h-20 md:w-48" />
         </Link>
+      </div>
+      <div className="flex items-center justify-center w-full md:hidden mt-4">
+        <a href="https://www.instagram.com/m3caminhoes" target="_blank" rel="noopener noreferrer">
+          <Instagram className="h-8 w-8 text-white mr-4 cursor-pointer" />
+        </a>
+        <a href="https://www.facebook.com/seufacebook" target="_blank" rel="noopener noreferrer">
+          <Facebook className="h-8 w-8 text-white cursor-pointer" />
+        </a>
       </div>
       <nav className="hidden md:flex w-full md:w-auto">
         <Tabs className="flex space-x-4">
