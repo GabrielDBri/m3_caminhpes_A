@@ -6,6 +6,8 @@ export interface Product {
   id: number;
   name: string;
   brand: string;
+  ano: string;
+  km: string;
   price: number;
   images: string[]; // Alteração para suportar múltiplas imagens
   description: string;
@@ -88,6 +90,8 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
           <div className="md:w-2/5 p-4 overflow-y-auto max-h-full">
             <p>{product.description}</p>
             <p className="mt-4">{product.additionalInfo}</p>
+            <p className="mt-4">Ano: {product.ano}</p>
+            <p className="mt-4">KM: {product.km}</p>
             
             <form onSubmit={handleSubmit} className="mt-4 text-black">
               <input

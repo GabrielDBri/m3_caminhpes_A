@@ -104,8 +104,8 @@ const ProductList = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row justify-between items-center border border-black p-4 text-black shadow-md">
-        <div className="flex-grow flex items-center mb-2 md:mb-0">
+      <div className="flex flex-col md:flex-row border-l-4 border-red-600 justify-between items-center p-4 text-black shadow-md bg-gray-600"> {/* Adicionando bg-yellow-200 para destacar */}
+        <div className="w-full md:flex-grow  flex items-center mb-2 md:mb-0">
           <i className="fa fa-search text-red-500 mr-2"></i>
           <select
             value={filterType}
@@ -117,7 +117,7 @@ const ProductList = () => {
             <option value="Automotivo">Automotivo</option>
           </select>
         </div>
-        <div className="flex-grow mb-2 md:mb-0 md:ml-2">
+        <div className="w-full md:flex-grow mb-2 md:mb-0 md:ml-2">
           <select
             value={filterBrand}
             onChange={handleFilterBrandChange}
@@ -130,7 +130,7 @@ const ProductList = () => {
             <option value="Cruze">Cruze</option>
           </select>
         </div>
-        <div className="flex-grow md:ml-2">
+        <div className="w-full md:flex-grow md:ml-2">
           <input
             type="text"
             placeholder="Preço Máximo"
@@ -141,16 +141,16 @@ const ProductList = () => {
         </div>
       </div>
       <header className="w-full text-left text-white py-7">
-        <h1 className="text-4xl font-bold">Nosso Estoque:</h1>
+        <h1 className="text-3xl border-l-4 border-red-600 font-bold p-4">Nosso Estoque:</h1>
       </header>
       <section className="p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {table.getRowModel().rows.map(row => (
-            <article key={row.id} className="border p-4 bg-gray-700">
+            <article key={row.id} className=" p-4 bg-gray-700">
               <img src={row.original.images[0]} alt={`Image of ${row.original.name}`} className="w-full h-48 object-cover" />
               <h2 className="text-lg font-semibold mt-2">{row.original.name}</h2>
               <p className="text-gray-500">{row.original.brand}</p>
-              <p className="text-red-600">{new Intl.NumberFormat('pt-BR', {
+              <p className="text-white-600">{new Intl.NumberFormat('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
               }).format(row.original.price)}</p>
@@ -163,7 +163,7 @@ const ProductList = () => {
             </article>
           ))}
         </div>
-        {selectedProduct && modalReady && ( // Renderizar o modal somente quando o modal estiver pronto e pelo menos uma imagem estiver carregada
+        {selectedProduct && modalReady && (
           <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
         )}
       </section>

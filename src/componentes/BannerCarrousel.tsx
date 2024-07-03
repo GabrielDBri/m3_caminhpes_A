@@ -1,8 +1,8 @@
 import {Swiper, SwiperSlide} from 'swiper/react'
 
-import caminha1 from '../assets/caminha3 (2).jpg';
-import caminha2 from '../assets/caminha3.jpg';
-import caminha3 from '../assets/caminha2.jpg';
+import caminhao1 from '../assets/caminhao1.jpeg';
+import caminhao2 from '../assets/caminhao2.jpg';
+import caminhao3 from '../assets/caminhao3.jpeg';
 import { Autoplay, Navigation } from 'swiper/modules';
 
 // Importar os módulos corretamente
@@ -22,13 +22,13 @@ const BannerCarousel = () => {
     autoplay
     >
       <SwiperSlide >
-        <img src={caminha1} alt="Slide 1" className="object-cover h-full w-full" />
+        <img src={caminhao1} alt="Slide 1" className="object-cover h-full w-full" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={caminha2} alt="Slide 2" className="object-cover h-full w-full" />
+        <img src={caminhao2} alt="Slide 2" className="object-cover h-full w-full" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={caminha3} alt="Slide 3" className="object-cover h-full w-full" />
+        <img src={caminhao3} alt="Slide 3" className="object-cover h-full w-full" />
       </SwiperSlide>
     </Swiper>
   );
