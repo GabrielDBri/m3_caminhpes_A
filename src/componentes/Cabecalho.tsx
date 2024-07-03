@@ -12,7 +12,7 @@ const Cabecalho = () => {
   }, [location]);
 
   return (
-    <header className="bg-gradient-to-b from-gray-700 to-black text-white p-4 flex flex-col md:flex-row items-center justify-between w-full fixed top-0 left-0 z-50">
+    <header className={`bg-gradient-to-b from-gray-700 to-black text-white p-4 flex flex-col md:flex-row items-center justify-between w-full ${window.innerWidth > 768 ? 'fixed top-0 left-0 z-50' : 'relative'}`}>
       <div className="flex items-center justify-center w-full md:w-auto">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Logo" className="h-16 w-36 md:h-20 md:w-48" />
@@ -30,20 +30,21 @@ const Cabecalho = () => {
       <nav className="hidden md:flex w-full md:w-auto">
         <Tabs className="flex space-x-4">
           <TabsList className="flex items-center justify-center">
-            <TabsTrigger value="Home" asChild>
-              <Link 
-                to="/" 
-                className="text-white text-xl md:text-2xl hover:text-gray-300 px-3 md:px-5 border-b-2 border-transparent hover:border-red-500"
-              >
-                Home  
-              </Link>
-            </TabsTrigger>
+            
             <TabsTrigger value="quem-somos" asChild>
               <Link 
                 to="/quem-somos" 
                 className="text-white text-xl md:text-2xl hover:text-gray-300 px-3 md:px-5 border-b-2 border-transparent hover:border-red-500"
               >
                 Quem Somos
+              </Link>
+            </TabsTrigger>
+            <TabsTrigger value="Home" asChild>
+              <Link 
+                to="/" 
+                className="text-white text-xl md:text-2xl hover:text-gray-300 px-3 md:px-5 border-b-2 border-transparent hover:border-red-500"
+              >
+                Home  
               </Link>
             </TabsTrigger>
             <TabsTrigger value="fale-conosco" asChild>
@@ -69,20 +70,21 @@ const Cabecalho = () => {
       <nav className="md:hidden w-full mt-4">
         <Tabs className="flex space-x-4 justify-center">
           <TabsList className="flex w-full justify-center">
-            <TabsTrigger value="quem-somos" asChild>
-              <Link 
-                to="/" 
-                className="text-white text-xl hover:text-gray-300 px-3 border-b-2 border-transparent hover:border-red-500"
-              >
-                Home
-              </Link>
-            </TabsTrigger>
+            
             <TabsTrigger value="quem-somos" asChild>
               <Link 
                 to="/quem-somos" 
                 className="text-white text-xl hover:text-gray-300 px-3 border-b-2 border-transparent hover:border-red-500"
               >
                 Quem Somos
+              </Link>
+            </TabsTrigger>
+            <TabsTrigger value="quem-somos" asChild>
+              <Link 
+                to="/" 
+                className="text-white text-xl hover:text-gray-300 px-3 border-b-2 border-transparent hover:border-red-500"
+              >
+                Home
               </Link>
             </TabsTrigger>
             <TabsTrigger value="fale-conosco" asChild>
