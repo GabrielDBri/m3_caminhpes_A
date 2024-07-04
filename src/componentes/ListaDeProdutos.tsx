@@ -18,7 +18,7 @@ const ProductList = () => {
       return (
         (filterType === '' || product.type.includes(filterType)) &&
         (filterBrand === '' || product.brand.includes(filterBrand)) &&
-        (filterValue === '' || product.price <= parseFloat(filterValue))
+        (filterValue === '' || product.price <= parseFloat(filterValue.replace(/[R$,.]/g, '')))
       );
     });
   }, [filterType, filterBrand, filterValue]);
@@ -77,8 +77,27 @@ const ProductList = () => {
     setFilterBrand(e.target.value);
   };
 
+  const formatCurrency = (value: string) => {
+    const numericValue = value.replace(/\D/g, '');
+    if (!numericValue) return '';
+    const formattedValue = new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(parseFloat(numericValue) || 0);
+    return formattedValue.replace('R$', 'R$ ');
+  };
+
   const handleFilterValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterValue(e.target.value);
+    const inputValue = e.target.value;
+
+    if (inputValue === '') {
+      setFilterValue('');
+    } else {
+      const formattedValue = formatCurrency(inputValue);
+      setFilterValue(formattedValue);
+    }
   };
 
   useEffect(() => {
@@ -104,8 +123,8 @@ const ProductList = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row border-l-4 border-red-600 justify-between items-center p-4 text-black shadow-md bg-gray-600"> {/* Adicionando bg-yellow-200 para destacar */}
-        <div className="w-full md:flex-grow  flex items-center mb-2 md:mb-0">
+      <div className="flex flex-col md:flex-row border-l-4 border-red-600 justify-between items-center p-4 text-black shadow-md bg-gray-600">
+        <div className="w-full md:flex-grow flex items-center mb-2 md:mb-0">
           <i className="fa fa-search text-red-500 mr-2"></i>
           <select
             value={filterType}
@@ -149,7 +168,7 @@ const ProductList = () => {
       <section className="p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {table.getRowModel().rows.map(row => (
-            <article key={row.id} className=" p-4 bg-gray-700">
+            <article key={row.id} className="p-4 bg-gray-700">
               <img src={row.original.images[0]} alt={`Image of ${row.original.name}`} className="w-full h-48 object-cover" />
               <h2 className="text-lg font-semibold mt-2">{row.original.name}</h2>
               <p className="text-gray-500">{row.original.brand}</p>
