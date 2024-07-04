@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { send } from 'emailjs-com';
 import Draggable from 'react-draggable';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import ModalConfirmacao from './ModalConfirmacao'; // Importar o componente ModalConfirmacao
 
 export interface Product {
   id: number;
@@ -27,7 +30,7 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
     message: '',
   });
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,14 +39,6 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.images.length);
-  };
-
-  const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + product.images.length) % product.images.length);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -59,11 +54,24 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
     send('service_8me3ten', 'template_m6p1d6b', templateParams, 'T80AufAu-uOSR4VAy')
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        onClose();
+        setIsModalOpen(true);  // Abre o modal de confirmação ao enviar com sucesso
       })
       .catch((err) => {
         console.error('FAILED...', err);
       });
+
+    // Resetar o formulário depois de enviar
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+    });
+  };
+
+  const closeConfirmationModal = () => {
+    setIsModalOpen(false);
+    onClose(); // Fechar o ProductModal
   };
 
   return (
@@ -73,17 +81,26 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
           <div className="modal-header cursor-move mb-4 md:mb-0 text-white">
             <h2 className="text-2xl font-bold mb-4">{product.name}</h2>
           </div>
-          {/* Carrossel de imagens */}
+          {/* Carrossel de imagens com Swiper */}
           <div className="md:w-3/5 mb-4 md:mb-0 overflow-hidden relative">
-            <div className="relative w-full h-full">
-              <button onClick={handlePrevImage} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-400 px-1 py-1 rounded-l-md z-10">
-                Anterior
-              </button>
-              <button onClick={handleNextImage} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-400 px-1 py-1 rounded-r-md z-10">
-                Próxima
-              </button>
-              <img src={product.images[currentImageIndex]} alt={product.name} className="w-full h-full object-contain max-h-96 md:max-h-screen" />
-            </div>
+            <Swiper
+              modules={[Navigation, Autoplay, Pagination]}
+              className="w-full h-full"
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              navigation
+              autoplay={{ delay: 3000 }}
+            >
+              {product.images.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={image}
+                    alt={`${product.name} ${index + 1}`}
+                    className="w-full h-full object-contain max-h-96 md:max-h-screen"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
           
           {/* Informações adicionais e formulário */}
@@ -145,6 +162,9 @@ const ProductModal = ({ product, onClose }: ProductModalProps) => {
           </button>
         </div>
       </Draggable>
+
+      {/* Modal de confirmação */}
+      <ModalConfirmacao isOpen={isModalOpen} onClose={closeConfirmationModal} />
     </div>
   );
 };

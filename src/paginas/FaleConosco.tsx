@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import ModalConfirmacao from '../componentes/ModalConfirmacao'; // Importar o componente ModalConfirmacao
 
 const FaleConosco = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const FaleConosco = () => {
     assunto: '',
     mensagem: ''
   });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,7 +34,12 @@ const FaleConosco = () => {
     };
     
     emailjs.send("service_8me3ten", "template_154f6vn", templateParams, "T80AufAu-uOSR4VAy")
-      
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setIsModalOpen(true);  // Abre o modal ao enviar com sucesso
+      }, (err) => {
+        console.log('FAILED...', err);
+      });
 
     // Resetar o formulário depois de enviar
     setFormData({
@@ -44,16 +52,22 @@ const FaleConosco = () => {
     });
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 items-center min-h-screen bg-gray-800 text-white">
-      <div className=" py-16">
-        <h2 className="text-2xl font-bold mb-4">Entre em Contato</h2>
-        <li>Telefone: (35) 99761-8038</li>
+    <div className="grid grid-cols-1 sm:grid-cols-2 items-center min-h-screen bg-gray-800 pt-8 md:pt-0 text-white">
+      <div className="py-16 pl-4">
+        <h2 className="text-2xl font-bold mb-4 border-l-4 border-red-600 -pl5">Entre em Contato</h2>
+        <ul>
+          <li>Telefone: (35) 99761-8038</li>
+        </ul>
         <p>Avenida Presidente Tancredo de Almeida Neves, 434 <br />
         Avenida - Itajuba - MG.</p>
       </div>
-      {/* Coluna esquerda (formulário) */}
-      <div className=" p-6 border">
+      {/* Coluna direita (formulário) */}
+      <div className="p-6 border">
         <h2 className="text-2xl font-bold mb-4">Fale Conosco</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex space-x-4">
@@ -145,6 +159,9 @@ const FaleConosco = () => {
           </button>
         </form>
       </div>
+
+      {/* Modal de confirmação */}
+      <ModalConfirmacao isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };

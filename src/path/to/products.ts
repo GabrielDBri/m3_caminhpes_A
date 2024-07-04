@@ -1,17 +1,31 @@
-import ivecoImage1 from '/Iveco/Iveco 1.png';
-import fordCargo1 from '/src/assets/ford cargo/ford 1.fw.png';
-import fordCargo2 from '/src/assets/ford cargo/ford 2.fw.png';
-import fordCargo3 from '/src/assets/ford cargo/ford 3.fw.png';
-import fordCargo4 from '/src/assets/ford cargo/ford 4.fw.png';
-import mercedes1 from '/mercedes/merces 3.png';
-import mercedes2 from '/mercedes/merces.png';
-import mercedes3 from '/mercedes/merces 2.png';
-import mercedes4 from '/mercedes/merces 4.png';
-import cruze1 from '/src/assets/cruze/cruze1.png';
-import cruze2 from '/src/assets/cruze/cruze2.png';
-import cruze3 from '/src/assets/cruze/cruze3.png';
-import cruze4 from '/src/assets/cruze/cruze4.png';
-import landhover1 from '/src/assets/caminhao2.jpg'
+import ivecoImage1 from '/src/assets/Iveco/iveco.webp';
+import fordCargo1 from '/src/assets/ford cargo/ford 1.fw.webp';
+import fordCargo2 from '/src/assets/ford cargo/ford 2.fw.webp';
+import fordCargo3 from '/src/assets/ford cargo/ford 3.fw.webp';
+import fordCargo4 from '/src/assets/ford cargo/ford 4.fw.webp';
+import mercedes1 from '/src/assets/mercedes/mercedes1.webp';
+import mercedes2 from '/src/assets/mercedes/mercedes2.webp';
+import mercedes3 from '/src/assets/mercedes/mercedes3.webp';
+import mercedes4 from '/src/assets/mercedes/mercedes4.webp';
+import cruze1 from '/src/assets/cruze/cruze1.webp';
+import cruze2 from '/src/assets/cruze/cruze2.webp';
+import cruze3 from '/src/assets/cruze/cruze3.webp';
+import cruze4 from '/src/assets/cruze/cruze4.webp';
+import landhover1 from '/src/assets/land hover/landhover1.webp';
+import landhover2 from '/src/assets/land hover/landhover2.webp';
+import landhover3 from '/src/assets/land hover/landhover3.webp';
+import landhover4 from '/src/assets/land hover/landhover4.webp';
+import landhover5 from '/src/assets/land hover/landhover5.webp';
+import landhover6 from '/src/assets/land hover/landhover6.webp';
+import landhover7 from '/src/assets/land hover/landhover7.webp';
+import jetta1 from '/src/assets/jetta/jetta.webp';
+import jetta2 from '/src/assets/jetta/jetta2.webp';
+import jetta3 from '/src/assets/jetta/jetta3.webp';
+import jetta4 from '/src/assets/jetta/jetta4.webp';
+import kia1 from '/src/assets/kia/kiabongo1.webp';
+import kia2 from '/src/assets/kia/kiabongo2.webp';
+import kia3 from '/src/assets/kia/kiabongo3.webp';
+import kia4 from '/src/assets/kia/kiabongo1.webp';
 
 
 
@@ -85,9 +99,33 @@ export const products: Product[] = [
     ano: '2019',
     km: '79.000',
     price: 195000,
-    images: [landhover1], // Exemplo de imagem
+    images: [landhover1,landhover2,landhover3,landhover4,landhover5,landhover6,landhover7], // Exemplo de imagem
     description: 'Carro forte e economico',
     additionalInfo: 'Usado, totalmente preservado, segundo dono   ',
+  },
+  {
+    id: 6,
+    name: 'Kia Bombo K 2500',
+    brand: 'Kia',
+    type: 'Caminhão',
+    ano: '2020',
+    km: '200.000',
+    price: 128000,
+    images: [kia1,kia2,kia3,kia4], // Exemplo de imagem
+    description: 'Caminhão forte e economico',
+    additionalInfo: 'Usado, totalmente preservado, Unico dono   ',
+  },
+  {
+    id: 7,
+    name: 'Jetta Confortline 1.4 turbo',
+    brand: 'Volkswagen',
+    type: 'Automotivo',
+    ano: '2019',
+    km: '60.000',
+    price: 100000,
+    images: [jetta1,jetta2,jetta3,jetta4], // Exemplo de imagem
+    description: 'Carro forte e economico',
+    additionalInfo: 'Usado, totalmente preservado, Unico dono   ',
   },
 
 

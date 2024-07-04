@@ -125,6 +125,9 @@ const ProductList = () => {
           >
             <option value="">Marca</option>
             <option value="Ford">Ford</option>
+            <option value="Volkswagen">Volkswagen</option>
+            <option value="Kia">Kia</option>
+            <option value="Land Rover">Land Rover</option>
             <option value="Iveco">Iveco</option>
             <option value="Mercedes">Mercedes</option>
             <option value="Cruze">Cruze</option>
